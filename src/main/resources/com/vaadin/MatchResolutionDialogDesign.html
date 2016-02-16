@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8" name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
+ </head> 
+ <body> 
+  <vaadin-vertical-layout size-full="true"> 
+   <vaadin-horizontal-layout primary-style-name="v-horizontallayout" size-full="true" :expand=""> 
+    <vaadin-vertical-layout primary-style-name="v-verticallayout" spacing="true" size-full="true" margin="true" :expand=""> 
+     <vaadin-label size-auto="true" plain-text="" _id="player1Label" :expand="">
+       Player 1 
+     </vaadin-label> 
+     <vaadin-text-field _id="player1TextField" :center="" :expand=""></vaadin-text-field> 
+    </vaadin-vertical-layout> 
+    <vaadin-vertical-layout primary-style-name="v-verticallayout" spacing="true" size-full="true" margin="true" :expand=""> 
+     <vaadin-label size-auto="true" plain-text="" _id="player2Label" :expand="">
+       Player 2 
+     </vaadin-label> 
+     <vaadin-text-field _id="player2TextField" :center="" :expand=""></vaadin-text-field> 
+    </vaadin-vertical-layout> 
+   </vaadin-horizontal-layout> 
+   <vaadin-horizontal-layout primary-style-name="v-horizontallayout" spacing="true" width-full="true" height="108px" margin="true" :bottom="" :center=""> 
+    <vaadin-button enabled="false" style-name="primary" plain-text="" _id="confirmButton" :middle="">
+      Confirm 
+    </vaadin-button> 
+    <vaadin-button plain-text="" _id="cancelButton" :middle="" :right="">
+      Cancel 
+    </vaadin-button> 
+   </vaadin-horizontal-layout> 
+  </vaadin-vertical-layout>  
+ </body>
+</html>
