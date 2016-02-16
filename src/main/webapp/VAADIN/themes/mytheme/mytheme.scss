@@ -35,4 +35,13 @@
   @include valo;
 
   // Insert your own theme rules here
+  .separator {
+  	border-bottom: 3px solid #aaa;
+  }
+  
+  .hoveremph {
+  	div:hover {
+  		background-color: #99ccff;
+  	}
+  }
 }

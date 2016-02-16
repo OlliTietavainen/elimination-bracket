@@ -19,6 +19,7 @@ import com.vaadin.ui.declarative.Design;
 @SuppressWarnings("serial")
 public class TournamentDesign extends VerticalLayout {
 	protected Label tournamentNameLabel;
+	protected VerticalLayout roundHolderVLayout;
 
 	public TournamentDesign() {
 		Design.read(this);

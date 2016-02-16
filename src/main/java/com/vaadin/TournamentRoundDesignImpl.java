@@ -12,18 +12,20 @@ import com.vaadin.ui.VerticalLayout;
 public class TournamentRoundDesignImpl extends TournamentRoundDesign {
 	
 	private List<Match> matches = new ArrayList<>();
+	public static int matchCounter = 1;
 	
 	public TournamentRoundDesignImpl(List<Player> remainingPlayers) {
 		VerticalLayout vl = new VerticalLayout();
-		for (int i = 0; i < remainingPlayers.size() / 2; i = i + 2) {
+		for (int i = 0; i < remainingPlayers.size() / 2; i++) {
 			Match m = new Match();
-			m.populate(remainingPlayers.get(i), remainingPlayers.get(i+1));
 			matches.add(m);
 		}
-		Iterator<Match> iter = matches.iterator();
-		while(iter.hasNext()) {
-			Match match = iter.next();
-			MatchDesignImpl mdi = new MatchDesignImpl(match);
+		Iterator<Match> matchIter = matches.iterator();
+		Iterator<Player> playerIter = remainingPlayers.iterator();
+		while(matchIter.hasNext()) {
+			Match match = matchIter.next();
+			match.populate(playerIter.next(), playerIter.next());
+			MatchDesignImpl mdi = new MatchDesignImpl(match, matchCounter++);
 			vl.addComponent(mdi);
 			
 		}

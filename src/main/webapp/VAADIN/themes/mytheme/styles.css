@@ -12932,3 +12932,11 @@ div.v-layout.v-horizontal.v-widget {
 	width: 19px;
 	overflow: hidden;
 }
+
+.mytheme .separator {
+	border-bottom: 3px solid #aaa;
+}
+
+.mytheme .hoveremph div:hover {
+	background-color: #99ccff;
+}
