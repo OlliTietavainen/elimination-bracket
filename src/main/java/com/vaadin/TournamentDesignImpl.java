@@ -4,7 +4,9 @@ import java.util.List;
 
 import com.vaadin.TournamentDesign;
 import com.vaadin.model.Player;
+import com.vaadin.ui.Alignment;
 import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Notification;
 
 public class TournamentDesignImpl extends TournamentDesign {
 
@@ -17,12 +19,26 @@ public class TournamentDesignImpl extends TournamentDesign {
 		roundHolderVLayout.removeAllComponents();
 		roundHolderVLayout.addComponent(roundsLayout);
 		roundsLayout.setSizeFull();
-		nextRound();
+		nextRound(players);
 	}
 
-	private void nextRound() {
-		TournamentRoundDesignImpl nextRound = new TournamentRoundDesignImpl(players);
+	private void nextRound(List<Player> roundPlayers) {
+		TournamentRoundDesignImpl nextRound = new TournamentRoundDesignImpl(roundPlayers, this);
 		roundsLayout.addComponent(nextRound);
+		roundsLayout.setComponentAlignment(nextRound, Alignment.MIDDLE_LEFT);
+	}
+
+	public void allMatchesResolved(List<Player> winners) {
+		if (winners.size() == 1) {
+			winnerFound(winners.get(0));
+		} else {
+			nextRound(winners);
+		}
+		
+	}
+	
+	private void winnerFound(Player winner) {
+		Notification.show("Winner is found: " + winner.getName());
 	}
 	
 }

@@ -13,23 +13,25 @@ public class MatchDesignImpl extends MatchDesign {
 	private Match match;
 	private MatchResolutionDialogDesignImpl dialog;
 	private Window window;
-	
+	private TournamentRoundDesignImpl parent;
 	private LayoutClickListener windowOpener = new LayoutClickListener() {
 
 		@Override
 		public void layoutClick(LayoutClickEvent event) {
 			dialog = new MatchResolutionDialogDesignImpl(window, match);
-			window.setPosition(event.getClientX(), event.getClientY());
 			window.setWidth(600, Unit.PIXELS);
 			window.setHeight(300, Unit.PIXELS);
 			window.setContent(dialog);
+			window.center();
+			window.setModal(true);
 			UI.getCurrent().addWindow(window);
 		}
 		
 	};
 	
-	public MatchDesignImpl(Match match, int matchCounter) {
+	public MatchDesignImpl(Match match, int matchCounter, TournamentRoundDesignImpl tournamentRoundDesignImpl) {
 		this.match = match;
+		parent = tournamentRoundDesignImpl;
 		firstNameLabel.setValue(match.getP1().getName());
 		secondNameLabel.setValue(match.getP2().getName());
 		matchNumberLabel.setValue("Match number #"+matchCounter);
@@ -45,6 +47,7 @@ public class MatchDesignImpl extends MatchDesign {
 					setStar(secondNameLabel);
 				}
 				matchHL.removeLayoutClickListener(windowOpener);
+				parent.matchResolved();
 			}
 		});
 	}
