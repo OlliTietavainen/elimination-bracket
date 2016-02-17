@@ -10,7 +10,26 @@ import com.vaadin.ui.Window;
 
 public class MatchResolutionDialogDesignImpl extends MatchResolutionDialogDesign {
 
-	private Validator val = new IntegerRangeValidator("Value must be an integer between 0 and 1000", 0, 1000);
+	Validator val = new Validator() {
+
+		@Override
+		public void validate(Object value) throws InvalidValueException {
+			String stringValue = (String) value;
+			if ("".equals(stringValue)) {
+				return;
+			}
+			try {
+				int intValue = Integer.parseInt(stringValue);
+				if (intValue < 0) {
+					throw new InvalidValueException("Score can't be negative!");
+				}
+			} catch (NumberFormatException nfe) {
+				throw new InvalidValueException("Must be zero or a positive integer");
+			}
+		}
+		
+	};
+	
 	private ValueChangeListener list = new ValueChangeListener() {
 		
 		@Override
