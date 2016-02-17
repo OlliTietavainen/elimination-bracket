@@ -47,6 +47,7 @@ public class MatchDesignImpl extends MatchDesign {
 					setStar(secondNameLabel);
 				}
 				matchHL.removeLayoutClickListener(windowOpener);
+				matchHL.removeStyleName("hoveremph");
 				parent.matchResolved();
 			}
 		});

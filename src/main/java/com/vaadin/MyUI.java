@@ -11,6 +11,7 @@ import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.annotations.Widgetset;
 import com.vaadin.model.Player;
+import com.vaadin.server.Page;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.UI;
@@ -26,14 +27,21 @@ public class MyUI extends UI {
 	
 	private String[] names = {"foo", "bar", "baz", "qux", 
 								"quux", "corge", "grault", "garply"};
+
+    final VerticalLayout layout = new VerticalLayout();
 	
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        final VerticalLayout layout = new VerticalLayout();
         layout.setSizeFull();
-        TournamentDesignImpl tournament = new TournamentDesignImpl("Name of tournament", createDummyData());
-        layout.addComponent(tournament);
-        tournament.setSizeFull();
+        Window window = new Window();
+        InitDialogDesignImpl initDialog = new InitDialogDesignImpl(window, this);
+        window.setWidth(400, Unit.PIXELS);
+        window.setHeight(600, Unit.PIXELS);
+        window.setModal(true);
+        window.setClosable(false);
+        window.setContent(initDialog);
+        window.center();
+        getUI().addWindow(window);
         setContent(layout);
     }
 
@@ -52,4 +60,12 @@ public class MyUI extends UI {
     	Collections.shuffle(players, new Random(System.nanoTime()));
     	return players;
     }
+    
+    protected void startTournament(List<Player> players, String tournamentName) {
+    	Collections.shuffle(players, new Random(System.nanoTime()));
+    	TournamentDesignImpl tournament = new TournamentDesignImpl(tournamentName, players);
+        layout.addComponent(tournament);
+        tournament.setSizeFull();
+    }
+    
 }

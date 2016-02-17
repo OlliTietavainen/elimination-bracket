@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.vaadin.TournamentDesign;
 import com.vaadin.model.Player;
+import com.vaadin.server.Page;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Notification;
@@ -38,7 +39,9 @@ public class TournamentDesignImpl extends TournamentDesign {
 	}
 	
 	private void winnerFound(Player winner) {
-		Notification.show("Winner is found: " + winner.getName());
+		Notification n = new Notification("Winner is found: " + winner.getName());
+		n.setDelayMsec(10000);
+		n.show(Page.getCurrent());
 	}
 	
 }
