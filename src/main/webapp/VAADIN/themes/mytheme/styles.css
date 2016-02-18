@@ -12940,3 +12940,7 @@ div.v-layout.v-horizontal.v-widget {
 .mytheme .hoveremph div:hover {
 	background-color: #99ccff;
 }
+
+.mytheme .matchdone {
+	background-color: #eeeeee;
+}

@@ -52,6 +52,8 @@ public class MatchResolutionDialogDesignImpl extends MatchResolutionDialogDesign
 			match.resolve(p1, p2);
 			window.close();
 		});
+		player1Label.setValue(match.getP1().getName());
+		player2Label.setValue(match.getP2().getName());
 		player1TextField.addValidator(val);
 		player2TextField.addValidator(val);
 		player1TextField.addValueChangeListener(list);
