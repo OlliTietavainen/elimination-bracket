@@ -12944,3 +12944,12 @@ div.v-layout.v-horizontal.v-widget {
 .mytheme .matchdone {
 	background-color: #eeeeee;
 }
+
+.mytheme div {
+	-webkit-border-radius: 25px;
+	-webkit-border-top-left-radius: 0;
+	-moz-border-radius: 25px;
+	-moz-border-radius-topleft: 0;
+	border-radius: 25px;
+	border-top-left-radius: 0;
+}
